@@ -1,0 +1,16 @@
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.xl\:flex-1 {
+  position: relative;
+  min-height: 550px;
+}
+
+@media (max-width: 768px) {
+  .xl\:flex-1 {
+    min-height: 350px;
+  }
+}

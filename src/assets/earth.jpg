@@ -1,0 +1,20 @@
+// Replace the material section in initEarthAnimation():
+const textureLoader = new THREE.TextureLoader();
+
+// For now, we'll use a color since we don't have the texture file
+// But you can add an earth texture later
+const material = new THREE.MeshStandardMaterial({
+  color: 0x2194ce,
+  roughness: 0.7,
+  metalness: 0.2,
+  emissive: 0x0a1929,
+  emissiveIntensity: 0.3,
+});
+
+// If you have earth.jpg texture, use this instead:
+// const earthTexture = textureLoader.load('assets/earth.jpg');
+// const material = new THREE.MeshStandardMaterial({
+//   map: earthTexture,
+//   roughness: 0.7,
+//   metalness: 0.2,
+// });

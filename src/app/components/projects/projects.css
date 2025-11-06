@@ -1,0 +1,8 @@
+.card-img_hover {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.bg-tertiary:hover .card-img_hover {
+  opacity: 1;
+}

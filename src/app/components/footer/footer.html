@@ -1,0 +1,29 @@
+<footer class="w-full py-6 bg-black-100/90 text-white border-t border-[#915EFF]/20">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+      <!-- Copyright -->
+      <div class="text-secondary text-sm">
+        © {{ currentYear }} Prit Ukey. All rights reserved.
+      </div>
+
+      <!-- Social Links -->
+      <div class="flex gap-6">
+        <a
+          *ngFor="let link of socialLinks"
+          [href]="link.url"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-white hover:text-[#915EFF] transition-colors duration-300 transform hover:scale-110"
+          [attr.aria-label]="link.name"
+        >
+          <i [class]="link.icon + ' text-2xl'"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Additional Info -->
+    <div class="text-center mt-4 text-secondary text-xs">
+      Built with Angular & Spring Boot <span class="text-red-500">❤️</span>
+    </div>
+  </div>
+</footer>

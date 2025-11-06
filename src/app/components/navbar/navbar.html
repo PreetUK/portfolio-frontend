@@ -1,0 +1,72 @@
+<nav
+  [ngClass]="[
+    styles.paddingX,
+    'w-full flex items-center py-5 fixed top-0 z-20 transition-all duration-300',
+    scrolled ? 'bg-primary shadow-lg' : 'bg-transparent'
+  ]"
+>
+  <div class="w-full flex justify-between items-center max-w-7xl mx-auto">
+    <div
+      class="flex items-center gap-2 cursor-pointer"
+      (click)="scrollToTop()"
+    >
+      <div class="w-9 h-9 rounded-full bg-gradient-to-r from-[#915EFF] to-[#00cea8] flex items-center justify-center text-white font-bold text-lg">
+        PU
+      </div>
+      <p class="text-white text-[18px] font-bold cursor-pointer flex">
+        Prit Ukey &nbsp;
+        <span class="sm:block hidden">| Java Developer</span>
+      </p>
+    </div>
+
+    <ul class="list-none hidden sm:flex flex-row gap-10">
+      <li
+        *ngFor="let nav of navLinks"
+        [ngClass]="[
+          active === nav.title ? 'text-white' : 'text-secondary',
+          'hover:text-white text-[18px] font-medium cursor-pointer transition-colors duration-300'
+        ]"
+        (click)="setActive(nav.title); scrollToSection(nav.id)"
+      >
+        {{ nav.title }}
+      </li>
+    </ul>
+
+    <div class="sm:hidden flex flex-1 justify-end items-center">
+      <div
+        class="w-[28px] h-[28px] cursor-pointer"
+        (click)="toggleMenu()"
+      >
+        <svg *ngIf="!toggle" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+        <svg *ngIf="toggle" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </div>
+
+      <div
+        [ngClass]="[
+          !toggle ? 'hidden' : 'flex',
+          'p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl'
+        ]"
+      >
+        <ul class="list-none flex justify-end items-start flex-1 flex-col gap-4">
+          <li
+            *ngFor="let nav of navLinks"
+            [ngClass]="[
+              'font-poppins font-medium cursor-pointer text-[16px]',
+              active === nav.title ? 'text-white' : 'text-secondary'
+            ]"
+            (click)="toggleMenu(); setActive(nav.title); scrollToSection(nav.id)"
+          >
+            {{ nav.title }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

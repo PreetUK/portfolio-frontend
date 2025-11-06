@@ -1,0 +1,66 @@
+<section class="relative w-full h-screen mx-auto overflow-hidden">
+  <!-- 3D Canvas (Behind everything) -->
+  <div *ngIf="!isMobile" class="absolute inset-0 top-0 h-full w-full z-0">
+    <canvas #canvas class="w-full h-full pointer-events-none"></canvas>
+  </div>
+
+  <!-- Content (Above canvas) -->
+  <div
+    [ngClass]="[
+      'absolute inset-0 top-[120px] max-w-7xl mx-auto z-10',
+      styles.paddingX,
+      'flex flex-row items-start gap-5'
+    ]"
+  >
+    <div class="flex flex-col justify-center items-center mt-5">
+      <div class="w-5 h-5 rounded-full bg-[#915EFF]"></div>
+      <div class="w-1 sm:h-80 h-40 violet-gradient"></div>
+    </div>
+
+    <div class="relative z-20">
+      <h1 [ngClass]="[styles.heroHeadText, 'text-white']">
+        Hi, I'm <span class="text-[#915EFF]">Prit</span>
+      </h1>
+      <p [ngClass]="[styles.heroSubText, 'mt-2 text-white-100']">
+        Full-Stack Java Developer <br class="sm:block hidden" />
+        Building scalable applications with Spring Boot & Angular
+      </p>
+      
+      <!-- Quick Links -->
+      <div class="mt-8 flex gap-4 flex-wrap relative z-30">
+        <a 
+          href="https://github.com/PreetUK" 
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-tertiary py-3 px-6 rounded-xl text-white font-bold hover:bg-[#915EFF] transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-2xl cursor-pointer"
+        >
+          <i class="fab fa-github text-xl"></i> GitHub
+        </a>
+        <a 
+          href="https://www.linkedin.com/in/prit-ukey" 
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-tertiary py-3 px-6 rounded-xl text-white font-bold hover:bg-[#915EFF] transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-2xl cursor-pointer"
+        >
+          <i class="fab fa-linkedin text-xl"></i> LinkedIn
+        </a>
+        <!-- ✅ Updated Resume Button - Using click handler -->
+        <button 
+          (click)="downloadResume()"
+          class="bg-[#915EFF] py-3 px-6 rounded-xl text-white font-bold hover:bg-[#764ba2] transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-2xl cursor-pointer relative z-50"
+        >
+          <i class="fas fa-download text-xl"></i> Resume
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center z-10">
+    <a (click)="scrollToSection('about')" class="cursor-pointer">
+      <div class="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
+        <div class="w-3 h-3 rounded-full bg-secondary mb-1 animate-bounce"></div>
+      </div>
+    </a>
+  </div>
+</section>

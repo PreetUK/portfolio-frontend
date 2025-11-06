@@ -1,0 +1,86 @@
+<section [ngClass]="[styles.padding, 'max-w-7xl mx-auto relative z-0']" id="contact">
+  <span class="hash-span">&nbsp;</span>
+
+  <div class="xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden">
+    <!-- Contact Form -->
+    <div class="flex-[0.75] bg-black-100 p-8 rounded-2xl" data-aos="fade-right">
+      <p [ngClass]="styles.sectionSubText">GET IN TOUCH</p>
+      <h3 [ngClass]="styles.sectionHeadText">Contact.</h3>
+
+      <form (ngSubmit)="onSubmit()" #contactForm="ngForm" class="mt-12 flex flex-col gap-8">
+        <!-- Name -->
+        <label class="flex flex-col">
+          <span class="text-white font-medium mb-4">Your Name</span>
+          <input
+            type="text"
+            name="name"
+            [(ngModel)]="contact.name"
+            required
+            placeholder="What's your name?"
+            class="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+          />
+        </label>
+
+        <!-- Email -->
+        <label class="flex flex-col">
+          <span class="text-white font-medium mb-4">Your Email</span>
+          <input
+            type="email"
+            name="email"
+            [(ngModel)]="contact.email"
+            required
+            placeholder="What's your email?"
+            class="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+          />
+        </label>
+
+        <!-- Subject -->
+        <label class="flex flex-col">
+          <span class="text-white font-medium mb-4">Subject</span>
+          <input
+            type="text"
+            name="subject"
+            [(ngModel)]="contact.subject"
+            placeholder="What's the subject?"
+            class="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+          />
+        </label>
+
+        <!-- Message -->
+        <label class="flex flex-col">
+          <span class="text-white font-medium mb-4">Your Message</span>
+          <textarea
+            rows="7"
+            name="message"
+            [(ngModel)]="contact.message"
+            required
+            placeholder="What do you want to say?"
+            class="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+          ></textarea>
+        </label>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          [disabled]="!contactForm.valid || loading"
+          class="bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary hover:bg-[#915EFF] transition-all disabled:opacity-50"
+        >
+          {{ loading ? 'Sending...' : 'Send Message' }}
+        </button>
+
+        <!-- Success/Error Messages -->
+        <div *ngIf="submitted" class="text-green-500 text-center">
+          ✓ Message sent successfully!
+        </div>
+        <div *ngIf="error" class="text-red-500 text-center">
+          ✗ Failed to send message. Please try again.
+        </div>
+      </form>
+    </div>
+
+    <!-- Earth Animation -->
+    <div class="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]" data-aos="fade-left">
+      <canvas #earthCanvas class="w-full h-full"></canvas>
+    </div>
+  </div>
+</section>

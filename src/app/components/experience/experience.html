@@ -1,0 +1,67 @@
+<section [ngClass]="[styles.padding, 'max-w-7xl mx-auto relative z-0']" id="work">
+  <span class="hash-span">&nbsp;</span>
+
+  <div class="experience-heading text-center">
+    <p [ngClass]="styles.sectionSubText">What I have done so far</p>
+    <h2 [ngClass]="styles.sectionHeadText">Work Experience.</h2>
+  </div>
+
+  <div class="mt-20 flex flex-col">
+    <div class="relative">
+      <!-- Vertical Line -->
+      <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-[#915EFF] to-[#804dee] hidden md:block"></div>
+
+      <div *ngFor="let experience of experiences; let i = index" #timelineCard class="mb-16 relative">
+        <!-- Timeline Card -->
+        <div [ngClass]="['md:w-1/2', i % 2 === 0 ? 'md:ml-auto md:pl-8' : 'md:mr-auto md:pr-8']">
+          <div class="bg-[#1d1836] p-8 rounded-3xl shadow-card relative">
+            <!-- Icon -->
+            <div 
+              [ngStyle]="{'background-color': experience.iconBg}"
+              class="absolute w-16 h-16 rounded-full flex justify-center items-center shadow-lg md:top-1/2 md:transform md:-translate-y-1/2"
+              [ngClass]="i % 2 === 0 ? 'md:-left-8' : 'md:-right-8'"
+            >
+              <img
+                [src]="experience.icon"
+                [alt]="experience.company_name"
+                class="w-[90%] h-[90%] object-contain"
+              />
+            </div>
+
+            <!-- Date Badge (Mobile) -->
+            <div class="md:hidden mb-4">
+              <span class="inline-block bg-[#915EFF] text-white px-4 py-2 rounded-full text-sm font-semibold">
+                {{ experience.date }}
+              </span>
+            </div>
+
+            <!-- Date Badge (Desktop) -->
+            <div class="hidden md:block absolute top-1/2 transform -translate-y-1/2"
+                 [ngClass]="i % 2 === 0 ? '-right-[180px]' : '-left-[180px]'">
+              <span class="inline-block bg-[#915EFF] text-white px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap">
+                {{ experience.date }}
+              </span>
+            </div>
+
+            <!-- Content -->
+            <div [ngClass]="i % 2 === 0 ? 'md:ml-0' : 'md:ml-0'">
+              <h3 class="text-white text-[24px] font-bold">{{ experience.title }}</h3>
+              <p class="text-secondary text-[16px] font-semibold mt-2">
+                {{ experience.company_name }}
+              </p>
+
+              <ul class="mt-5 list-disc ml-5 space-y-2">
+                <li
+                  *ngFor="let point of experience.points"
+                  class="text-white-100 text-[14px] pl-1 tracking-wider"
+                >
+                  {{ point }}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

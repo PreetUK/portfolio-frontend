@@ -1,0 +1,33 @@
+<section [ngClass]="[styles.padding, 'max-w-7xl mx-auto relative z-0']" id="about">
+  <span class="hash-span">&nbsp;</span>
+
+  <div class="about-heading">
+    <p [ngClass]="styles.sectionSubText">Introduction</p>
+    <h2 [ngClass]="styles.sectionHeadText">Overview.</h2>
+  </div>
+
+  <p class="about-text mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]">
+    I'm Prit Ukey, a Full-Stack Java Developer with expertise in Spring Boot, 
+    Hibernate, RESTful APIs, Angular, and MySQL. I specialize in building 
+    scalable web applications with clean, efficient code. Currently pursuing 
+    BTech in Computer Technology with a passion for solving complex problems 
+    and continuous learning. I have hands-on experience with microservices, 
+    role-based security, and agile development practices. Let's collaborate 
+    to bring innovative ideas to life!
+  </p>
+
+  <div class="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center gap-10">
+    <div
+      *ngFor="let service of services; let i = index"
+      #serviceCard
+      class="w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card cursor-pointer"
+    >
+      <div class="bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col hover:bg-[#1a1448] transition-all duration-300">
+        <div class="w-20 h-20 rounded-full bg-gradient-to-r from-[#915EFF] to-[#00cea8] flex items-center justify-center">
+          <i class="fas fa-code text-white text-4xl"></i>
+        </div>
+        <h3 class="text-white text-[20px] font-bold text-center">{{ service.title }}</h3>
+      </div>
+    </div>
+  </div>
+</section>
