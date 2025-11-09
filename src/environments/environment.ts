@@ -1,4 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://portfolio-backend-prit.onrender.com/api'  // Will update after backend deployment
-};
+  apiUrl: 'https://portfolio-backend-prit.onrender.com/api'
+};git add .
+git commit -m "Update production backend URL"
+git push origin main
